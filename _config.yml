@@ -1,10 +1,10 @@
 # Site settings
-title: "Songs Are Awesome"
+title: "Bovid Diversity"
 description: > # this means to ignore newlines until "email:"
-   a user-friendly source of songs
-email: songsareawesome@gmail.com
+   a tour of bovid diversity
+email: wabarr@gmail.com
 avatar: images/avatar.png
-base_url: http://localhost:4000
+base_url: bovids.are-awesome.com
 permalink: none
-tagline: Great songs. No ads. No kidding.
+tagline: a tour of bovid diversity
 #blog logo

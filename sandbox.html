@@ -1,0 +1,108 @@
+---
+title: sandbox
+layout: thanks
+---
+
+<script src="{{site.base_url}}/assets/js/marked.js"></script>
+
+
+<section>
+    <h2>Submit a Song</h2>
+    <div class="row uniform">
+      <div class="12u">
+        <h4><span id="cheatsheetlabel">Cheat Sheet</span>&nbsp;
+        <a href="#" id="togglecheatsheet" class="icon fa-plus"><span class="label">Help</span></a></h4>
+
+        <ul style="list-style-type: none; display:none;" id="helptext">
+          <li>Use <a href="https://help.github.com/articles/markdown-basics/">markdown syntax</a> (the ` ` `&nbsp;&nbsp;&nbsp;&nbsp; ` ` ` parts around the song itself are critical)</li>
+          <li>To add a chord at an exact spot in the lyrics, Use Shift + Click to insert a placeholder</li>
+        </ul>
+      </div>
+    </div>
+
+    <form method="post" action="//formspree.io/submitanawesomesong@gmail.com">
+      <div class="row uniform">
+        <div class="12u">
+          <!-- this field has to be called 'message' to properly work with formspree-->
+          <textarea id="message" name="message" rows=10 style="font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;">
+          </textarea>
+        </div>
+      </div>
+      <div class="row uniform">
+        <div class="9u">
+        </div>
+        <div class="3u">
+          <ul class="actions">
+            <li><input type="submit" class="special" value="Submit Song" /></li>
+            <input type="hidden" name="_next" value="{{site.base_url}}/thanks.html" />
+            <input type="text" name="_gotcha" style="display:none" /> <!--This field is a honeypot to attract spambots-->
+          </ul>
+        </div>
+    </form>
+
+    <div id="renderedcontent"></div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+
+  $("#togglecheatsheet").click(function(){
+    $("#togglecheatsheet").toggleClass("fa-minus fa-plus");
+    $("#helptext").toggle();
+
+  })
+
+  function updateMarkdown() {
+    var markdown = $('#message').val();
+    $('#renderedcontent').html(marked(markdown));
+  }
+
+  /* Inialize */
+  var initialVal = "## Title\n\n### Author\n\n```\nSong Goes Here\n```"
+  $("#message").val(initialVal)
+  updateMarkdown();
+
+  $('#message').keyup(updateMarkdown);
+  $('#message').click(function(e){
+    if(e.shiftKey){
+      var text = this.value;
+      var previousNewLine = text.lastIndexOf('\n', this.selectionStart - 1);
+      var newLineBeforePrevious = text.slice(0, previousNewLine).lastIndexOf('\n');
+      var lineLength = this.selectionStart - previousNewLine;
+
+      /*If the character immediately  the previousNewLine is ^, then you have to extend the line with spaces*/
+      if(text.slice(previousNewLine-1, previousNewLine).includes("\^")) {
+        var newString = '';
+        for(var i=1; i < 5; ++i){
+            newString += ' ';
+          }
+          newString += "\^";
+          this.value = [text.slice(0, previousNewLine), newString, text.slice(previousNewLine)].join('')
+          return;
+      }
+
+      var previousLineChords = text.slice(newLineBeforePrevious, previousNewLine).includes("\^")
+      if(previousLineChords){
+        newString = text.slice(newLineBeforePrevious, previousNewLine)
+        newString = newString.slice(0,lineLength) + "^" + newString.slice(lineLength+1)
+        this.value = [text.slice(0, newLineBeforePrevious), newString, text.slice(previousNewLine)].join('');
+        text = null;
+      }
+      else {
+        var newString = '';
+        for(var i=1; i < lineLength; ++i){
+            newString += ' ';
+          }
+          newString += "\^";
+          if(previousNewLine == -1){
+            this.value = newString + '\n' + this.value;
+            text = null;
+          } else {
+            this.value = [text.slice(0, previousNewLine), '\n'+newString, text.slice(previousNewLine)].join('');
+            text = null;
+          }
+        }
+      }
+    });
+});
+</script>

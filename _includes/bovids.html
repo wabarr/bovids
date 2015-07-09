@@ -3,6 +3,9 @@
 		<div class="container">
 			<header class="major">
 				<h2>Bovids</h2>
+				{% for bovid in site.posts %}
+					<li><a href='{{bovid.url}}'>{{bovid.binomial | replace:"_"," "}}</a></li>
+				{% endfor %}
 			</header>
 		</div>
 	</section>

@@ -4,7 +4,7 @@ description: > # this means to ignore newlines until "email:"
    a tour of bovid diversity
 email: wabarr@gmail.com
 avatar: images/avatar.png
-base_url: bovids.are-awesome.com
+base_url: http://bovids.are-awesome.com
 permalink: none
 tagline: a tour of bovid diversity
 #blog logo

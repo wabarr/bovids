@@ -3,9 +3,22 @@
 		<div class="container">
 			<header class="major">
 				<h2>Bovids</h2>
-				{% for bovid in site.posts %}
-					<li><a href='{{bovid.url}}'>{{bovid.binomial | replace:"_"," "}}</a></li>
-				{% endfor %}
+				{% capture categories %}
+	  				{% for category in site.categories %}
+	    				{{ category[0] }}
+	  				{% endfor %}
+					{% endcapture %}
+
+					{% assign sortedcategories = categories | split:' ' | sort %}
+
+					{% for category in sortedcategories %}
+	  				<h3 id="{{ category }}">{{ category | replace:'_',' ' | capitalize }}</h3>
+	  				<ul>
+	  				{% for post in site.categories[category] %}
+	    				<li><a href="{{ post.url }}">{{ post.commonname | capitalize }}</a></li>
+						{% endfor %}
+						</ul>
+					{% endfor %}
 			</header>
 		</div>
 	</section>

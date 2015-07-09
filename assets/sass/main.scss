@@ -962,7 +962,6 @@
 				padding: 0;
 
 				li {
-					border-top: solid _size(border-width) _palette(header, border);
 					display: block;
 					padding: 0;
 
@@ -975,6 +974,8 @@
 						text-decoration: none;
 
 						&.active {
+							border-left: solid (_size(border-width) * 1.5) _palette(header, border);
+							border-right: solid (_size(border-width) * 1.5)  _palette(header, border);
 							background: _palette(bg);
 							color: _palette(header, bg) !important;
 						}

@@ -1,1 +1,1 @@
-{"value": "{{ post.commonname }}", "data": "{{ post.commonname }}", "url": "{{ post.url }}"}
+{"value": "{{ post.commonname | capitalize }} ({{ post.binomial | replace:"_"," "}})", "data": "{{ post.commonname | capitalize }} ({{ post.binomial | replace:"_"," "}})", "url": "{{ post.url }}"}

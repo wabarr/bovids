@@ -1,0 +1,30 @@
+---
+layout: thanks
+---
+<input type="text" name="bovid" id="autocomplete"/>
+
+<div class="autocomplete-suggestions">
+    <div class="autocomplete-group"><strong></strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected"></div>
+    <div class="autocomplete-suggestion"></div>
+    <div class="autocomplete-suggestion"></div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    $("#scripts").after("<script src='/assets/js/jquery.autocomplete.js' type='text/javascript/'><//script>");
+
+    $.getJSON("search.json", {format: 'json'},  setupAutoComplete)
+
+    function setupAutoComplete( data ) {
+      $('#autocomplete').autocomplete({
+        lookup: data,
+        onSelect: function (suggestion) {
+            window.location.href = suggestion.url ;
+          }
+        });
+      };
+
+
+  });
+</script>

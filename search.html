@@ -14,7 +14,7 @@ layout: thanks
   document.addEventListener("DOMContentLoaded", function(event) {
     $("#scripts").after("<script src='/assets/js/jquery.autocomplete.js' type='text/javascript/'><//script>");
 
-    $.getJSON("search.json", {format: 'json'},  setupAutoComplete)
+    $.getJSON("search.json",  setupAutoComplete)
 
     function setupAutoComplete( data ) {
       $('#autocomplete').autocomplete({

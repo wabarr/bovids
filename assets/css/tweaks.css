@@ -1,14 +1,9 @@
-.autocomplete-suggestion {
-  padding: 5px;
-  border-radius: 4px;
-  cursor: pointer
-}
-
-.autocomplete-suggestion:hover {
-  background-color: #3759b4;
-  color: #fff;
-
-}
+.autocomplete-suggestions { border: 1px; border-radius: 2px; solid #999; background: #fff; margin:2px; overflow: auto; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { display: block; border-bottom: 1px solid #fff; }
 
 ul {
   list-style-type: none;

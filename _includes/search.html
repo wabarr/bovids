@@ -1,11 +1,15 @@
-
+<section id="two">
+  <div class="container">
+    <header class="major">
             <input type="text" placeholder="Search" name="bovid" id="autocomplete"/>
 
             <div class="autocomplete-suggestions">
                 <div class="autocomplete-suggestion"></div>
             </div>
-
-
+            <div id="searchresult"></div>
+    </header>
+  </div>
+</section>
         <script>
           document.addEventListener("DOMContentLoaded", function(event) {
 
@@ -18,7 +22,7 @@
               $('#autocomplete').autocomplete({
                 lookup: data,
                 onSelect: function (suggestion) {
-                    window.location.href = suggestion.url ;
+                    $("#searchresult").load(suggestion.url);
                   }
                 });
               };

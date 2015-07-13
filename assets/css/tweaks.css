@@ -6,8 +6,9 @@
 .autocomplete-group strong { display: block; border-bottom: 1px solid #fff; }
 
 #autocomplete {
-  margin: 3px;
+  margin-bottom:15px;
 }
+
 
 ul {
   list-style-type: none;

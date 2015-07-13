@@ -21,7 +21,7 @@
 							<div class="6u">
 								<ul class="tribe">
 		  						{% for post in site.categories[category] %}
-		    						<li><a href="{{ post.url }}">{{ post.commonname | capitalize }}</a></li>
+		    						<li><a class='bovidLink' href="{{ post.url }}">{{ post.commonname | capitalize }}</a></li>
 									{% endfor %}
 								</ul>
 							</div>
@@ -34,6 +34,13 @@
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function(event) {
+			$(".bovidLink").click(function(e){
+				e.preventDefault();
+				$("#searchresult").load($(this).attr('href'))
+				$('html, body').animate({
+        	scrollTop: $("#searchresult").offset().top
+				}, 100);
+			});
 			$(".tribe").hide()
 			$(".toggleTribe").click(function(){
 				$(this).toggleClass("fa-minus fa-plus")

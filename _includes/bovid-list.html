@@ -13,17 +13,17 @@
 
 					{% for category in sortedcategories %}
 
-						<h3 id="{{ category }}">{{ category | replace:'_',' ' | capitalize }}</h3>
+
 	  				<div class="row tribeContainer">
-							<div class="3u">
+							<h3 id="{{ category }}">{{ category | replace:'_',' ' | capitalize }} &nbsp;
+								<a class="icon fa-plus toggleTribe"><span class="label">tribe</span></a>
+							</h3>
+							<div class="6u">
 								<ul class="tribe">
 		  						{% for post in site.categories[category] %}
 		    						<li><a href="{{ post.url }}">{{ post.commonname | capitalize }}</a></li>
 									{% endfor %}
 								</ul>
-							</div>
-							<div class="3u">
-								<a class="icon fa-plus toggleTribe"><span class="label">tribe</span></a>
 							</div>
 							<div class="6u"></div>
 						</div>

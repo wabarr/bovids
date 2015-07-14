@@ -15,17 +15,18 @@
 
 
 	  				<div class="row tribeContainer">
-							<h3 id="{{ category }}">{{ category | replace:'_',' ' | capitalize }} &nbsp;
-								<a class="icon fa-plus toggleTribe"><span class="label">tribe</span></a>
-							</h3>
+							<div class="6u">
+								<h3 id="{{ category }}">{{ category | replace:'_',' ' | capitalize }} &nbsp;
+									<a class="icon fa-plus toggleTribe"><span class="label">tribe</span></a>
+								</h3>
+							</div>
 							<div class="6u">
 								<ul class="tribe">
 		  						{% for post in site.categories[category] %}
-		    						<li><a class='bovidLink' href="{{ post.url }}">{{ post.commonname | capitalize }}</a></li>
+		    						<li><a class='bovidLink' href="{{ post.url }}">{{ post.commonname | capitalize }} (<i>{{ post.binomial | replace:"_"," "}}</i>)</a></li>
 									{% endfor %}
 								</ul>
 							</div>
-							<div class="6u"></div>
 						</div>
 					{% endfor %}
 			</header>

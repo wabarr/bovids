@@ -13,3 +13,15 @@
 ul {
   list-style-type: none;
 }
+
+ul.tribe {
+  padding-top:8px;
+}
+
+.tribeContainer {
+  padding-top: 15px;
+  border-radius: 4px;
+}
+.tribeContainer:hover {
+  background-color: #F5F5F5;
+}

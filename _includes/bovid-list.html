@@ -23,7 +23,7 @@
 							<div class="6u">
 								<ul class="tribe">
 		  						{% for post in site.categories[category] %}
-		    						<li><a class='bovidLink' href="{{ post.url }}">{{ post.commonname | capitalize }} (<i>{{ post.binomial | replace:"_"," "}}</i>)</a></li>
+		    						<li class="bovidListElement"><a class='bovidLink' href="{{ post.url }}">{{ post.commonname | capitalize }} (<i>{{ post.binomial | replace:"_"," "}}</i>)</a></li>
 									{% endfor %}
 								</ul>
 							</div>

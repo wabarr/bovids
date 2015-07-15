@@ -25,3 +25,7 @@ ul.tribe {
 .tribeContainer:hover {
   background-color: #F5F5F5;
 }
+
+.bovidListElement {
+  padding-bottom: 10px;
+}
